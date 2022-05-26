@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO APP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Welcome to TODO APP</h1><br><br>
+
+        <div class="well">
+            <h3>Check your TODO List</h3><br><br>
+            <form action="{% url 'read_task' %}" method="post">
+                {% csrf_token %}
+                <label >Your Name:</label>
+                <input type="text" class="form-control" name="username" id="create_your_name"><br>
+                <button type="submit" class="btn btn-info" >Check</button>
+            </form><br>
+            <a href="createTodo"><button class="btn btn-primary">Create Todo List</button></a>
+        </div>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Your TODO List</h1><br><br>
+        <a href="/"><button class="btn btn-success">Goto Homepage</button></a><br><br>
+        <div class="row">
+            {% if todo_list %}
+                {% for task in todo_list %}
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item" id="username"><b>Your Name :</b> {{task.username}}</li>
+                        <li class="list-group-item" id="task"><b>Todo Task :</b> {{task.task}}</li>
+                        <li class="list-group-item" id="description"><b>Description :</b> {{task.description}}</li>
+                        <li class="list-group-item" id="completed"><b>Completed :</b> {{task.completed}}</li>
+
+                    </ul>
+                    <div class="btn-group">
+
+                        <form action="{% url 'update_task' %}" method="post">
+                            {% csrf_token %}
+
+                            <button type="button" class="updateModal btn btn-primary" data-id={{task.username}},{{task.task}},{{task.id}},{{task.description}} data-toggle="modal" data-target="#updateModal">Update Task </button><br><br>
+
+                            <div id="updateModal" class="modal fade" role="dialog">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Update Task</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      <label >Your Name:</label>
+                                      <input type="text" class="form-control" name="update_your_name" id="update_your_name"><br>
+                                      <label >Task Name:</label>
+                                      <input type="text" class="form-control" name="update_task" id="update_task"><br>
+                                      <label >Task Description:</label>
+                                      <input type="text" class="form-control" name="update_description" id="update_description" maxlength="100"><br>
+                                      <label >Task Completed: <input type="checkbox" name="update_completed" id="update_completed"><br></label><br><br>
+                                      <input type="hidden" name="task_id" id="task_id">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" >Update Task</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </form>
+
+                        <form action="{% url 'dalete_task' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="username" value={{task.username}}>
+                            <input type="hidden" name="id" value={{task.id}}>
+                            <button type="submit" class="btn btn-danger">Delete Task</button>
+                        </form><br>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="col-md-4">
+                <br><br><div class="alert alert-info" role="alert">
+                  No task in your TODO List !
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $(document).on("click", ".updateModal", function () {
+     var update_data = $(this).data('id');
+     const update_data_arr = update_data.split(",");
+
+     $('#update_your_name').val( update_data_arr[0] );
+     $('#update_task').val( update_data_arr[1] );
+     $('#task_id').val( update_data_arr[2] );
+     $('#update_description').val( update_data_arr[3] );
+});
+
+</script>

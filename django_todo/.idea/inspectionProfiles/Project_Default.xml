@@ -1,0 +1,39 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.10" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="15">
+            <item index="0" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="1" class="java.lang.String" itemvalue="json2parquet" />
+            <item index="2" class="java.lang.String" itemvalue="apache-airflow" />
+            <item index="3" class="java.lang.String" itemvalue="pymongo" />
+            <item index="4" class="java.lang.String" itemvalue="pypd" />
+            <item index="5" class="java.lang.String" itemvalue="requests" />
+            <item index="6" class="java.lang.String" itemvalue="simple-salesforce" />
+            <item index="7" class="java.lang.String" itemvalue="requests_oauthlib" />
+            <item index="8" class="java.lang.String" itemvalue="boto3" />
+            <item index="9" class="java.lang.String" itemvalue="sshtunnel" />
+            <item index="10" class="java.lang.String" itemvalue="ipdb" />
+            <item index="11" class="java.lang.String" itemvalue="datadog" />
+            <item index="12" class="java.lang.String" itemvalue="email_validator" />
+            <item index="13" class="java.lang.String" itemvalue="prometheus_client" />
+            <item index="14" class="java.lang.String" itemvalue="flask" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

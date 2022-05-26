@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create TODO</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <h3>Create TODO List</h3><br><br>
+        <div class="well">
+
+            <form action="{% url 'create_task' %}" method="post">
+                {% csrf_token %}
+
+                <label >Your Name:</label>
+                <input type="text" class="form-control" name="your_name" id="create_your_name"><br>
+                <label >Task Name:</label>
+                <input type="text" class="form-control" name="task" id="create_task"><br>
+                <label >Task Description:</label>
+                <input type="text" class="form-control" name="description" id="create_description"><br>
+                <label >Task Completed: <input type="checkbox" name="completed" id="created_completed"><br></label><br><br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Task</button>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
